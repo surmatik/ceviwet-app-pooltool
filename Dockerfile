@@ -50,7 +50,7 @@ WORKDIR /var/www/framadate
 
 # Install Composer & dependencies
 RUN php -r "readfile('https://getcomposer.org/installer');" | php -- --install-dir=/usr/local/bin --filename=composer && \
-    composer install
+    composer install --no-dev --no-interaction --prefer-dist
 
 # Apache-Port
 EXPOSE 80
