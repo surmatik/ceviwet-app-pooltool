@@ -1,4 +1,4 @@
-FROM php:7.4-apache
+FROM php:8.3-apache
 
 RUN apt-get update && \
     apt-get install -y git libicu-dev libxml2-dev zip unzip zlib1g-dev g++ mariadb-client jq pandoc && \
@@ -50,7 +50,7 @@ WORKDIR /var/www/framadate
 
 # Install Composer & dependencies
 RUN php -r "readfile('https://getcomposer.org/installer');" | php -- --install-dir=/usr/local/bin --filename=composer && \
-    composer install
+    composer install --no-dev --no-interaction --prefer-dist
 
 # Apache-Port
 EXPOSE 80
